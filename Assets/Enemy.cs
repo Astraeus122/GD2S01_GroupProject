@@ -5,6 +5,12 @@ using System;
 
 public class Enemy : MonoBehaviour
 {
+    public enum EnemyType
+    {
+        BasicEnemy, // Your current enemy
+        AdvancedEnemy, // A new, more powerful enemy
+                       // Add more enemy types as needed following a  similar pattern
+    }
     // List of observers that are observing this enemy
     private List<IObserver<Enemy>> observers = new List<IObserver<Enemy>>();
 
