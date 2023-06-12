@@ -7,17 +7,19 @@ public class GameManager : MonoBehaviour
     public GameObject playerObject;
     public GameObject enemyObject;
 
+    public EnemyFactory enemyFactory;
+
     private void Start()
     {
         Player player = playerObject.AddComponent<Player>();
-        Enemy enemy = enemyObject.AddComponent<Enemy>();
-        enemy.SetHealth(100); // Initialize enemy with 100 health
-        enemy.SetDamage(10); // Initialize enemy with 10 damage
+        enemyFactory = new EnemyFactory();
+        Enemy basicEnemy = enemyFactory.CreateEnemy(enemyObject, Enemy.EnemyType.BasicEnemy);
+        Enemy advancedEnemy = enemyFactory.CreateEnemy(enemyObject, Enemy.EnemyType.AdvancedEnemy);
 
         Town town = Town.Instance;
 
         // Test player actions
-        player.Attack(enemy);
+        player.Attack(basicEnemy);  // Changed from enemy to basicEnemy from the previous iterations
 
         // Test building creation and addition to town
         player.Build(BuildingType.ResourceBuilding);
@@ -54,10 +56,10 @@ public class GameManager : MonoBehaviour
         Debug.Log("Wave " + waveNumber + " started.");
 
         // Create some enemies for this wave
-        Enemy enemy1 = enemyObject.AddComponent<Enemy>();
+        Enemy enemy1 = enemyFactory.CreateEnemy(enemyObject, Enemy.EnemyType.BasicEnemy);  // Use enemyFactory
         enemy1.Initialize(100, 10, "Enemy 1");
 
-        Enemy enemy2 = enemyObject.AddComponent<Enemy>();
+        Enemy enemy2 = enemyFactory.CreateEnemy(enemyObject, Enemy.EnemyType.AdvancedEnemy);  // Use enemyFactory
         enemy2.Initialize(200, 20, "Enemy 2");
 
         // Enemies start attacking
