@@ -10,6 +10,8 @@ public class Town : MonoBehaviour
     // List of buildings
     private List<Building> _buildings = new List<Building>();
 
+    public float timeSinceLastConsumption = 0f;
+
     // Accessor for the singleton instance
     public static Town Instance
     {
@@ -22,6 +24,12 @@ public class Town : MonoBehaviour
             }
             return _instance;
         }
+    }
+
+    // Method to access the buildings
+    public List<Building> GetBuildings()
+    {
+        return _buildings;
     }
 
     // Methods to add/remove buildings

@@ -25,6 +25,27 @@ public class GameManager : MonoBehaviour
 
         // Check the buildings in town
         town.DisplayBuildings();
+
+        ResourceBuilding buildingToUpgrade = null;
+        foreach (var building in Town.Instance.GetBuildings())
+        {
+            if (building is ResourceBuilding)
+            {
+                buildingToUpgrade = building as ResourceBuilding;
+                break;
+            }
+        }
+
+        // If a resource building was found, upgrade it
+        if (buildingToUpgrade != null)
+        {
+            buildingToUpgrade.Upgrade();
+        }
+        else
+        {
+            Debug.LogError("No resource building found to upgrade.");
+        }
+
         StartWave(1);
     }
 
@@ -42,5 +63,23 @@ public class GameManager : MonoBehaviour
         // Enemies start attacking
         enemy1.Attack();
         enemy2.Attack();
+    }
+
+    void Update()
+    {
+        // Update the time since the last consumption
+        Town.Instance.timeSinceLastConsumption += Time.deltaTime;
+
+        // If it's been more than some amount of time since the last consumption, consume resources
+        if (Town.Instance.timeSinceLastConsumption >= 5f)  // Change the 5 to whatever number of seconds you want between each consumption
+        {
+            foreach (var building in Town.Instance.GetBuildings())
+            {
+                building.ConsumeResources();
+            }
+
+            // Reset the timer
+            Town.Instance.timeSinceLastConsumption = 0f;
+        }
     }
 }

@@ -14,6 +14,20 @@ public class Building : MonoBehaviour
 {
     protected Town town; // The town this building belongs to
     public BuildingType buildingType;
+    public int level = 1;
+
+    public virtual void Upgrade()
+    {
+        level += 1;
+        Debug.Log("Building upgraded to level " + level);
+
+        // Add code here to change the building's behavior based on its level
+    }
+
+    public virtual void ConsumeResources()
+    {
+        Debug.Log("Default resource consumption");
+    }
 
     public void SetTown(Town town)
     {
