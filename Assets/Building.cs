@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 
+
+// Different building types
 public enum BuildingType
 {
     ResourceBuilding, // Formerly Farm
@@ -10,12 +12,15 @@ public enum BuildingType
     // Add more building types as needed...
 }
 
+
+// Building class
 public class Building : MonoBehaviour
 {
     protected Town town; // The town this building belongs to
     public BuildingType buildingType;
     public int level = 1;
 
+    // Upgrade building
     public virtual void Upgrade()
     {
         level += 1;
@@ -24,6 +29,7 @@ public class Building : MonoBehaviour
         // Add code here to change the building's behavior based on its level
     }
 
+    // Building consume resources
     public virtual void ConsumeResources()
     {
         Debug.Log("Default resource consumption");
@@ -34,6 +40,7 @@ public class Building : MonoBehaviour
         this.town = town;
     }
 
+    // Set building functionalilty
     public virtual void Functionality()
     {
         if (town != null)

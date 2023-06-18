@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+
+// Player class
 public class Player : MonoBehaviour
 {
     // Player stats
@@ -28,6 +30,7 @@ public class Player : MonoBehaviour
         Debug.Log("Player Attacking");
     }
 
+    // Player create a new building
     public void Build(BuildingType type)
     {
         GameObject buildingObject = new GameObject();
@@ -36,6 +39,7 @@ public class Player : MonoBehaviour
         Debug.Log("Player Building");
     }
 
+    // Update player health
     public void UpdateHealth(int amount)
     {
         health += amount;

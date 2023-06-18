@@ -5,6 +5,7 @@ using System;
 
 public class Enemy : MonoBehaviour
 {
+    // Different enemy types -- Apendix 2
     public enum EnemyType
     {
         BasicEnemy, // Your current enemy

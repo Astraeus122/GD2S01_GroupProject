@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
+// Class to create buildings
 public class BuildingFactory
 {
+    // Create buildings
     public Building CreateBuilding(GameObject buildingObject, BuildingType type)
     {
         Building building = null;
 
+        // Different types of buildings -- resource, soldier, defence
         switch (type)
         {
             case BuildingType.ResourceBuilding:

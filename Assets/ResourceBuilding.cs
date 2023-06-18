@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Class for resources building
 public class ResourceBuilding : Building
 {
     // Variables for resource stats would go here
 
+    // Resourse building functions -- creating resources
     public override void Functionality()
     {
         // Resource building functionality
         Debug.Log("Resource Building Functionality Executed");
     }
 
+    // Upgrade resource building
     public override void Upgrade()
     {
         // Perform the base upgrade
@@ -21,6 +24,7 @@ public class ResourceBuilding : Building
         Debug.Log("Additional upgrade steps for resource buildings...");
     }
 
+    // Continueously consume resources -- Apendix 2
     public override void ConsumeResources()
     {
         // Consume resources according to the level of the building

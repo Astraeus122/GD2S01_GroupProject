@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// Town Class
 public class Town : MonoBehaviour
 {
     // Singleton instance
@@ -39,12 +41,14 @@ public class Town : MonoBehaviour
         Debug.Log("Building Added");
     }
 
+    // Destroy building
     public void RemoveBuilding(Building building)
     {
         _buildings.Remove(building);
         Debug.Log("Building Removed");
     }
 
+    // Display buildings
     public void DisplayBuildings()
     {
         foreach (var building in _buildings)
