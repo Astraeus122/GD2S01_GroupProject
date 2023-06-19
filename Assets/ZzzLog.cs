@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ZzzLog : MonoBehaviour
 {
-    uint qsize = 15;  // number of messages to keep
+    uint qsize = 30;  // number of messages to keep
     Queue myLogQueue = new Queue();
 
     void Start()
