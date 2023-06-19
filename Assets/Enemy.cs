@@ -69,6 +69,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    // Check if enemy health is = 0 and call this function
+    public void Defeated()
+    {
+        Debug.Log("Enemy " + Name + " has been defeated!");
+    }
     // Additional methods for actions the enemy can take
 }
 

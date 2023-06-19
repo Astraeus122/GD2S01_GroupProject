@@ -30,4 +30,9 @@ public class ResourceBuilding : Building
         // Consume resources according to the level of the building
         Debug.Log("Resource Building consumed " + level * 10 + " resources for upkeep.");
     }
+    public void ProduceResources()
+    {
+        // Implement your logic for producing resources here
+        Debug.Log("Resource Building produced resources.");
+    }
 }
