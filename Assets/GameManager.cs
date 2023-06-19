@@ -18,9 +18,6 @@ public class GameManager : MonoBehaviour
 
         Town town = Town.Instance;
 
-        // Test player actions
-        player.Attack(basicEnemy);  // Changed from enemy to basicEnemy from the previous iterations
-
         // Test building creation and addition to town
         player.Build(BuildingType.ResourceBuilding);
         player.Build(BuildingType.SoldierBuilding);
@@ -65,6 +62,18 @@ public class GameManager : MonoBehaviour
         // Enemies start attacking
         enemy1.Attack();
         enemy2.Attack();
+
+        // Player starts attacking
+        Player player = playerObject.GetComponent<Player>();  // Get the Player component from playerObject
+        if (player != null)
+        {
+            player.Attack(enemy1);  // Player attacks enemy1
+            player.Attack(enemy2);  // Player attacks enemy2
+        }
+        else
+        {
+            Debug.LogError("Player component not found on playerObject.");
+        }
     }
 
     void Update()
@@ -72,12 +81,16 @@ public class GameManager : MonoBehaviour
         // Update the time since the last consumption
         Town.Instance.timeSinceLastConsumption += Time.deltaTime;
 
-        // If it's been more than some amount of time since the last consumption, consume resources
+        // If it's been more than some amount of time since the last consumption, consume resources and produce new resources
         if (Town.Instance.timeSinceLastConsumption >= 5f)  // Change the 5 to whatever number of seconds you want between each consumption
         {
             foreach (var building in Town.Instance.GetBuildings())
             {
                 building.ConsumeResources();
+                if (building is ResourceBuilding)
+                {
+                    ((ResourceBuilding)building).ProduceResources();  // Call the ProduceResources method for ResourceBuildings
+                }
             }
 
             // Reset the timer

@@ -25,7 +25,8 @@ public class Player : MonoBehaviour
     public void Attack(Enemy enemy)
     {
         // Attack functionality
-        Debug.Log("Player Attacking");
+        Debug.Log("Soldiers Attacking");
+        enemy.Defeated();  // Call the enemy's Defeated method here
     }
 
     public void Build(BuildingType type)
